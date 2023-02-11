@@ -1,0 +1,42 @@
+version: '3.7'
+
+services:
+
+  elasticsearch:
+    image: $ELASTIC_IMAGE
+    container_name: elasticsearch
+    environment:
+      - xpack.security.enabled=false
+      - discovery.type=single-node
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+    cap_add:
+      - IPC_LOCK
+    volumes:
+      - $PWD/tmp:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+      - 9300:9300
+    networks:
+      - local
+
+  kibana:
+    container_name: kibana
+    image: $KIBANA_IMAGE
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+    ports:
+      - 5601:5601
+    depends_on:
+      - elasticsearch
+    networks:
+      - local
+
+networks:
+  local:
+    name: $NETWORK
