@@ -2,6 +2,17 @@
 
 This project provides working examples to illustrate techniques to orchestrate, use and develop client applications Eleasticsearch.
 
+## Topics
+
+* [Concept](./docs/concepts.md)
+* [Kibana](./docs/kibana.md)
+
+## Refereces
+
+* [Beginner's Crash Course to Elastic Stack](https://www.youtube.com/watch?v=gS_nHTWZEJ8&list=PL_mJOmq4zsHZYAyK606y7wjQtC0aoE6Es)
+* [Official Elastic Documentation](https://www.elastic.co/guide/index.html)
+
+
 ## Disclaimer
 
 The working examples in this projects are purely for illustration only and are subject to modification without notice. Any opinions expressed is this project mine or belongs to the author of any referenced materials.
