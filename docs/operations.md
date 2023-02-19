@@ -1,9 +1,8 @@
-# Concepts
+# Operations
 
+This section presents a list of RESTFul operations you can perform on elasticsearch.
 
-## Interacting with API
-
-<u>Getting information about clusters and nodes</u>
+## Getting information about clusters and nodes
 
 Syntax:
 
@@ -23,9 +22,7 @@ or
 GET _nodes/stats
 ```
 
-<U>Create</u>
-
-1. Creating an index
+## Creating Index
 
 Syntax:
 
@@ -39,7 +36,7 @@ Example - Create an index name `greetings_messages`
 PUT greetings_messages
 ```
 
-2. Indexing a document
+## Indexing a document
 
 Syntax:
 
@@ -47,10 +44,11 @@ Syntax:
 POST <Name-of-index>/_doc
 {
     "field": "value"
+    ...
 }
 ```
 
-To autogenerate document id
+This autogenerate document id
 
 or 
 
@@ -60,7 +58,7 @@ PUT <Name-of-index>/_doc/<your-assigned-id>
     "field": "value"
 }
 ```
-To assign custom document id. This will replace document content with the same id.
+This assign custom document id and this will replace document content with the same id.
 
 or
 
@@ -98,7 +96,7 @@ PUT greetings_messages/_doc/1
 
 Create a document with an id of 1
 
-<u>Read</u>
+## Read document
 
 Syntax:
 
@@ -106,7 +104,7 @@ Syntax:
 GET <Name-of-index>/_doc/<id-of-document>
 ```
 
-<u>Upate</U>
+## Upate document
 
 Syntax:
 
@@ -120,10 +118,59 @@ POST <Name-of-index>/_update/<id-of-doc-to-update>
 }
 ```
 
-<u>Delete</u>
+## Delete a document
 
 Syntax:
 
 ```
 DELETE <Name-of-Index>/_doc/<id-of-doc-to-delete>
+```
+
+## Search by index
+
+Syntax:
+
+```
+GET <index>/_search
+```
+
+## Get the exact total number of hits
+
+Syntax:
+
+```
+GET <index>/_search
+{
+  "track_total_hits": true
+}
+```
+
+## Query
+
+Syntax:
+
+```
+GET <index>/_search
+{
+    "query":{
+        ...
+    }
+}
+```
+
+## Aggregations
+
+Syntax:
+
+```
+GET <index>._search{
+    "aggs":{
+        "<name of aggregation>":{
+            "<specify aggregation type>":{
+                "field":"<anme of field>",
+                "size": "<state number of items>
+            }
+        }
+    }
+}
 ```

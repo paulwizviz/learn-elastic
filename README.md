@@ -4,7 +4,7 @@ This project provides working examples to illustrate techniques to orchestrate, 
 
 ## Topics
 
-* [Concept](./docs/concepts.md)
+* [Operations](./docs/operations.md)
 * [Kibana](./docs/kibana.md)
 
 ## Refereces
