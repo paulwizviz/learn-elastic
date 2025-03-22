@@ -5,7 +5,7 @@ if [ "$(basename $(realpath .))" != "learn-elastic" ]; then
     exit 0
 fi
 
-export ELASTIC_IMAGE=elasticsearch:7.17.9
+export ELASTIC_IMAGE=elasticsearch:8.17.3
 export NETWORK_NAME=learn-elastic_network
 
 COMMAND=$1

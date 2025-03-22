@@ -5,7 +5,7 @@ if [ "$(basename $(realpath .))" != "learn-elastic" ]; then
     exit 0
 fi
 
-version=7.17.9
+version=8.17.3
 export ELASTIC_IMAGE=elasticsearch:$version
 export KIBANA_IMAGE=kibana:$version
 export NETWORK=learn-elastic_network
