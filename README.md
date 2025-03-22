@@ -6,6 +6,10 @@ This project provides working examples to illustrate techniques to orchestrate, 
 
 * [Kibana](./docs/kibana.md)
 
+## Working Examples
+
+* [Go Elastic Programming](https://github.com/paulwizviz/go-elastics.git)
+
 ## Refereces
 
 * [Beginner's Crash Course to Elastic Stack](https://www.youtube.com/watch?v=gS_nHTWZEJ8&list=PL_mJOmq4zsHZYAyK606y7wjQtC0aoE6Es)
