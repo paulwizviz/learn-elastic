@@ -18,7 +18,7 @@ services:
     cap_add:
       - IPC_LOCK
     volumes:
-      - $PWD/tmp/kibana:/usr/share/elasticsearch/data
+      - ./volumes/kibana:/usr/share/elasticsearch/data
     ports:
       - 9200:9200
       - 9300:9300

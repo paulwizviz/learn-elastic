@@ -1,0 +1,75 @@
+
+services:
+  elasticsearch1:
+    image: ${ELASTIC_IMAGE} # Use your desired version
+    container_name: elasticsearch1
+    environment:
+      - node.name=elasticsearch1
+      - cluster.name=my-es-cluster
+      - discovery.seed_hosts=elasticsearch2,elasticsearch3
+      - cluster.initial_master_nodes=elasticsearch1,elasticsearch2,elasticsearch3
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - xpack.security.enabled=false #disable security for local dev.
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - ./volumes/esdata1:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+      - 9600:9600
+    networks:
+      - local
+
+  elasticsearch2:
+    image: ${ELASTIC_IMAGE}
+    container_name: elasticsearch2
+    environment:
+      - node.name=elasticsearch2
+      - cluster.name=my-es-cluster
+      - discovery.seed_hosts=elasticsearch1,elasticsearch3
+      - cluster.initial_master_nodes=elasticsearch1,elasticsearch2,elasticsearch3
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - xpack.security.enabled=false
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - ./volumes/esdata2:/usr/share/elasticsearch/data
+    ports:
+      - 9201:9200
+      - 9601:9600
+    networks:
+      - local
+
+  elasticsearch3:
+    image: ${ELASTIC_IMAGE}
+    container_name: elasticsearch3
+    environment:
+      - node.name=elasticsearch3
+      - cluster.name=my-es-cluster
+      - discovery.seed_hosts=elasticsearch1,elasticsearch2
+      - cluster.initial_master_nodes=elasticsearch1,elasticsearch2,elasticsearch3
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - xpack.security.enabled=false
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - ./volumes/esdata3:/usr/share/elasticsearch/data
+    ports:
+      - 9202:9200
+      - 9602:9600
+    networks:
+      - local
+
+networks:
+  local:
+    driver: bridge
+    name: ${NETWORK_NAME}

@@ -1,9 +1,14 @@
 #!/bin/bash
 
+if [ "$(basename $(realpath .))" != "learn-elastic" ]; then
+    echo "You are outside the scope of the project"
+    exit 0
+fi
+
 version=7.17.9
 export ELASTIC_IMAGE=elasticsearch:$version
 export KIBANA_IMAGE=kibana:$version
-export NETWORK=learn-express_es
+export NETWORK=learn-elastic_network
 
 COMMAND=$1
 
@@ -13,7 +18,7 @@ case $COMMAND in
         docker rmi -f ${ELASTIC_IMAGE}
         docker rmi -f ${KIBANA_IMAGE}
         docker rmi -f $(docker images --filter "dangling=true" -q)
-        rm -rf ./tmp
+        rm -rf ./deployment/kibana/volumes
         ;;
     "start")
         docker-compose -f ./deployment/kibana/docker-compose.yml up
