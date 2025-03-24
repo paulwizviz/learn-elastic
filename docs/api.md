@@ -1,5 +1,7 @@
 # API
 
+In this section we cover some aspects of Elasticsearch API.
+
 * [Clusters and nodes](#clusters-and-nodes)
 * [Indexing](#indexing)
 * [CURD](#crud)
@@ -96,6 +98,53 @@ DELETE <Name-of-Index>/_doc/<id-of-doc-to-delete>
 
 ## Search
 
+There are a a number of factors to consider in a search operation:
+
+* [Precision](#precision)
+* [Recall](#recall)
+* [Ranking](#ranking)
+* [Syntax](#syntax)
+
+
+Refer to the [Beginner's Crash Course to Elastic Stack - Part 2: Relevance of a search](https://www.youtube.com/watch?v=CCTgroOcyfM) for tutorial
+
+### Precision 
+
+Precison tells us what portion of the **retrieved** data is actually relevant to the search query.
+
+Precision is calculated based on this formula:
+
+`Precision = True Positives / True Positives + False Positives`
+
+Where false positives are documents that are relevant but not returned.
+
+![image Precision](../assets/img/precision.png)
+
+### Recall
+
+Recall is what porpotion of relevant data is being return as search result. 
+
+The calculation is
+`Recall = True Positive / True Positive + False Negaitves`.
+
+![image recall](../assets/img/recall.png)
+
+### Ranking
+
+Precision and recall do not determined which of the documents are more relevant. Ranking prders the search result from most relevant (top) to least relevant (bottom).
+
+Ranking is determined by a score.
+
+### Score
+
+A score is a value that represents how relevant a document is to a specific query. A score is computed for each document that is a `hit` (returned by a search). The higher the score the higher is ranking.
+
+Method of scoring:
+* Term Frequencies -- how many times a term occurs in each document
+* Inverse Document Frequencies -- if the search term is found in many document, it is not revelant. It will focus on term frequencies in document with important search terms.
+
+### Syntax
+
 1. Search by index
 ```
 GET <index>/_search
@@ -106,39 +155,5 @@ GET <index>/_search
 GET <index>/_search
 {
   "track_total_hits": true
-}
-```
-
-There are two important search concepts:
-
-* Precision = True Positives / True Positives + False Positives i.e. what portion search result is relevant to search
-* Recall = True Positive / True Positive + False Negaitves i.e. what portion of search data is returned as search result
-* The return of the documents is not determined by ranking or more relevant i.e. highest at the top and lowest at the bottom.
-* Each ranking is determined by aa ranking
-* Method of scoring:
-    * Term Frequencies -- how many times a term occurs in each document
-    * Inverse Document Frequencies -- if the search term is found in many document, it is not revelant. It will focus on term frequencies in document with important search terms.
-
-3. Query
-```
-GET <index>/_search
-{
-    "query":{
-        ...
-    }
-}
-```
-
-4. Aggregations
-```
-GET <index>/_search{
-    "aggs":{
-        "<name of aggregation>":{
-            "<specify aggregation type>":{
-                "field":"<anme of field>",
-                "size": "<state number of items>
-            }
-        }
-    }
 }
 ```
