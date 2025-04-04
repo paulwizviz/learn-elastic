@@ -6,7 +6,7 @@ This project provides working examples to illustrate techniques to orchestrate, 
 
 ## Topics
 
-* [API](./docs/operations.md)
+* [API](./docs/api.md)
 * [Aggregates](./docs/aggregates.md)
 * [Kibana](./docs/kibana.md)
 * [Query](./docs/aggregates.md)
