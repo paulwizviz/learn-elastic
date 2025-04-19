@@ -157,3 +157,7 @@ GET <index>/_search
   "track_total_hits": true
 }
 ```
+
+## References
+
+* [Official API Reference](https://www.elastic.co/docs/api/doc/elasticsearch/)
