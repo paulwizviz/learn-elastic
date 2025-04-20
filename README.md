@@ -1,6 +1,6 @@
 # Overview
 
-This repositories contain references to working examples, educational and opinions related to Elastic Search technologies.
+This repository contain references to working examples, educational and opinions related to Elastic Search technologies.
 
 ## Notes
 
