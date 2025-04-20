@@ -1,4 +1,4 @@
-# Overview
+# Elastic Search: Working Examples and References
 
 This repository contain references to working examples, educational and opinions related to Elastic Search technologies.
 
