@@ -1,10 +1,8 @@
 # Overview
 
-Elasticsearch is a distributed, RESTful search and analytics engine.
+This repositories contain references to working examples, educational and opinions related to Elastic Search technologies.
 
-This project provides working examples to illustrate techniques to orchestrate, use and develop client applications Eleasticsearch.
-
-## Topics
+## Notes
 
 * [API](./docs/api.md)
 * [Aggregates](./docs/aggregates.md)
@@ -13,7 +11,11 @@ This project provides working examples to illustrate techniques to orchestrate, 
 
 ## Working Examples
 
-* [Go Elastic Programming](https://github.com/paulwizviz/go-elastics.git)
+* Programming Techniques
+    * [Go](https://github.com/paulwizviz/go-elastics.git)
+* Deployment Techniques
+    * [Docker Cluster](./deployment/docker-cluster/docker-compose.yml)
+    * [Single Docker and Kibana](./deployment/kibana/docker-compose.yml)
 
 ## Refereces
 
