@@ -1,0 +1,62 @@
+# Settings for the main Logstash pipeline
+pipeline:
+  # The number of worker threads that will process the events in the pipeline.
+  # The default is the number of CPU cores.
+  workers: 2
+
+  # The size of the internal event queue for each worker.
+  batch:
+    size: 125
+    delay: 5
+
+# Path settings
+path:
+  data: /usr/share/logstash/data
+  config: /usr/share/logstash/config
+  logs: /usr/share/logstash/logs
+  plugins: /usr/share/logstash/plugins
+
+# JVM settings
+jvm:
+  options:
+    - "-Xms1g"
+    - "-Xmx1g"
+
+# Logstash event routing.
+#
+# By default, Logstash will process events through all configured pipelines.
+# You can use conditional routing to send events to specific pipelines
+# based on event attributes.
+#
+# Example:
+# queue.type: persisted
+# queue.page.buffer.size: 10mb
+# queue.max_bytes.all: 1gb
+
+# Monitoring settings
+monitoring:
+  enabled: false
+#  elasticsearch:
+#    hosts: ["http://localhost:9200"]
+#    username: "elastic"
+#    password: "changeme"
+
+# HTTP API settings
+http:
+  host: "0.0.0.0"
+  port: 9600
+
+# Node settings
+node:
+  name: "logstash-docker"
+#  id: "your-unique-id"
+
+# Configuration reloading
+config:
+  reload:
+    automatic: false
+    interval: "3s"
+
+# Keystore settings
+keystore:
+  path: /usr/share/logstash/config/logstash.keystore

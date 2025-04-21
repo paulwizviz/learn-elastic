@@ -161,3 +161,4 @@ GET <index>/_search
 ## References
 
 * [Official API Reference](https://www.elastic.co/docs/api/doc/elasticsearch/)
+* [API Quick Start](https://www.elastic.co/docs/solutions/search/api-quickstarts)

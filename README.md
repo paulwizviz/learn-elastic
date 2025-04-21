@@ -4,18 +4,21 @@ This repository contain references to working examples, educational and opinions
 
 ## Notes
 
-* [API](./docs/api.md)
-* [Aggregates](./docs/aggregates.md)
-* [Kibana](./docs/kibana.md)
-* [Query](./docs/aggregates.md)
+* [API](./notes/api.md)
+* [Aggregates](./notes/aggregates.md)
+* [Deployment](./notes/deployment.md)
+* [Kibana](./notes/kibana.md)
+* [Query](./notes/aggregates.md)
 
 ## Working Examples
 
 * Programming Techniques
     * [Go](https://github.com/paulwizviz/go-elastics.git)
-* Deployment Techniques
-    * [Docker Cluster](./deployment/docker-cluster/docker-compose.yml)
-    * [Single Docker and Kibana](./deployment/kibana/docker-compose.yml)
+* Deployment Patterns
+    * Docker
+        * [Cluster](./deployment/docker-cluster/docker-compose.yml)
+        * [Kibana and one Elastic Search Instance](./deployment/kibana/docker-compose.yml)
+        * [ELK](./deployment/docker-elk/docker-compose.yml)
 
 ## Refereces
 

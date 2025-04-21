@@ -1,0 +1,46 @@
+services:
+  elasticsearch:
+    image: ${ELASTICSEARCH_IMAGE:-docker.elastic.co/elasticsearch/elasticsearch:8.10.0} # Default to 8.10.0
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+      - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
+    ports:
+      - "9200:9200"
+      - "9600:9600"
+    networks:
+      - local
+
+  logstash:
+    image: ${LOGSTASH_IMAGE:-docker.elastic.co/logstash/logstash:8.10.0} # Default to 8.10.0
+    container_name: logstash
+    depends_on:
+      - elasticsearch
+    environment:
+      - XPACK_MONITORING_ENABLED=false
+    volumes:
+      - ./logstash/pipeline:/usr/share/logstash/pipeline
+      - ./logstash/config:/usr/share/logstash/config
+    ports:
+      - "5044:5044" # Beats input
+      - "9601:9600" # Monitoring API
+      - "12345:12345" # Port for Go application logs
+    networks:
+      - local
+
+  kibana:
+    image: ${KIBANA_IMAGE:-docker.elastic.co/kibana/kibana:8.10.0} # Default to 8.10.0
+    container_name: kibana
+    depends_on:
+      - elasticsearch
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+    ports:
+      - "5601:5601"
+    networks:
+      - local
+
+networks:
+  local:
+    driver: bridge
+    name: ${NETWORK_NAME}
