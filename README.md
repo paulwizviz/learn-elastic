@@ -8,6 +8,7 @@ This repository contain references to working examples, educational and opinions
 * [Aggregates](./notes/aggregates.md)
 * [Deployment](./notes/deployment.md)
 * [Kibana](./notes/kibana.md)
+* [Mapping](./notes/mapping.md)
 * [Query](./notes/aggregates.md)
 
 ## Working Examples
